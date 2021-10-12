@@ -1,6 +1,8 @@
 :root {
 	--bg: #FFFFFF;
 	--fg: #000000;
+	--shadow: 0px 2px 8px rgba(0,0,0,0.1);
+	--activeshadow: 0px 4px 6px rgba(0,0,0,0.1);
 }
 
 @media(prefers-color-scheme:dark) {
@@ -16,4 +18,43 @@ body {
 	background-color: var(--bg);
 }
 
+#main {
+	padding: 10px;
+	margin: 0 auto;
+	max-width: 700px;
+}
 
+#main .header {
+	font-size: 2.5em;
+}
+
+#main .links {
+	flex-wrap: wrap;
+	display: inline-flex;
+	justify-content: center;
+}
+
+.links .link {
+	width: 20vw;
+	padding: 15px;
+	min-width: 220px;
+	max-width: 300px;
+	user-select: none;
+	border-radius: 10px;
+	box-shadow: var(--shadow);
+	margin: 10px 10px 10px 0px;
+	transition: 0.3s ease-in-out;
+	transition-property: transform box-shadow;
+}
+
+.links .link:active {
+	transform: scale(0.98);
+}
+
+.links .link:hover {
+	box-shadow: var(--activeshadow);
+}
+
+.links .link .url {
+	opacity: 0.5;
+}
