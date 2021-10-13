@@ -11,15 +11,16 @@ async function load() {
 		for (let ii = 0; ii < prefs.pages[i].links.length; ii++) {
 			main.innerHTML += `<div class="links"><div class="link link${i + '' + ii}">${prefs.pages[i].links[ii].name}</div></div>`;
 			let link = document.querySelector(".link" + i + '' + ii);
-			link.setAttribute("onclick", `location.href = "${location.protocol}//${window.location.hostname}:${prefs.pages[i].links[ii].port}"`);
 
 			if (! prefs.hideurls) {
 				if (! prefs.pages[i].hideurls) {
 					if (! prefs.pages[i].links[ii].hideurl) {
 						if (prefs.pages[i].links[ii].port != "") {
 							link.innerHTML += `<div class="url">on port ${prefs.pages[i].links[ii].port}</div>`
+							link.setAttribute("onclick", `location.href = "${location.protocol}//${window.location.hostname}:${prefs.pages[i].links[ii].port}"`);
 						} else if (prefs.pages[i].links[ii].url != "") {
 							link.innerHTML += `<div class="url">${prefs.pages[i].links[ii].url}</div>`
+							link.setAttribute("onclick", `location.href = "${prefs.pages[i].links[ii].url}"`);
 						}
 					}
 				}
