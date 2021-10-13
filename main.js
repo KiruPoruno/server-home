@@ -1,5 +1,8 @@
 async function load() {
 	let prefs = await (await fetch("settings.json")).json();
+	try {
+		prefs = await (await fetch("custom-settings.json")).json();
+	}catch(err) {}
 
 	document.title = prefs.title;
 
@@ -11,6 +14,8 @@ async function load() {
 			main.innerHTML += `<div class="links"><div class="link link${i + '' + ii}">${pref.name}</div></div>`;
 			let link = document.querySelector(".link" + i + '' + ii);
 
+			if (! pref.url) {pref.url = ""}
+			if (! pref.port) {pref.port = ""}
 			if (! pref.prefix) {pref.prefix = ""}
 			if (! pref.suffix) {pref.suffix = ""}
 			if (! prefs.hideurls) {
