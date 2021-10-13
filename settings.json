@@ -5,10 +5,10 @@
 			"title": "Server",
 			"links": [
 				{
-					"url": "",
+					"url": "duckduckgo.com",
 					"icon": "",
-					"port": "80",
-					"name": "test"
+					"port": "",
+					"name": "DuckDuckGO"
 				},
 				{
 					"url": "",
@@ -22,9 +22,11 @@
 			"title": "Server",
 			"links": [
 				{
-					"url": "",
+					"url": "duckduckgo.com",
 					"icon": "",
-					"port": "80",
+					"prefix": "https://",
+					"suffix": "/spread",
+					"port": "",
 					"name": "test"
 				},
 				{
