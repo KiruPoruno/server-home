@@ -1,0 +1,40 @@
+{
+	"title": "Server",
+	"pages": [
+		{
+			"title": "Server",
+			"links": [
+				{
+					"url": "",
+					"icon": "",
+					"port": "80",
+					"name": "test"
+				},
+				{
+					"url": "",
+					"icon": "",
+					"port": "80",
+					"name": "test"
+				}
+			]
+		},
+		{
+			"title": "Server",
+			"links": [
+				{
+					"url": "",
+					"icon": "",
+					"port": "80",
+					"name": "test"
+				},
+				{
+					"url": "",
+					"icon": "",
+					"port": "80",
+					"name": "test"
+				}
+			]
+		}
+
+	]
+}

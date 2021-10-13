@@ -28,13 +28,13 @@ body {
 	font-size: 2.5em;
 }
 
-#main #links {
+#main .links {
 	flex-wrap: wrap;
 	display: inline-flex;
 	justify-content: center;
 }
 
-#links .link {
+.links .link {
 	width: 20vw;
 	padding: 15px;
 	cursor: pointer;
@@ -48,14 +48,14 @@ body {
 	transition-property: transform box-shadow;
 }
 
-#links .link:active {
+.links .link:active {
 	transform: scale(0.98);
 }
 
-#links .link:hover {
+.links .link:hover {
 	box-shadow: var(--activeshadow);
 }
 
-#links .link .url {
+.links .link .url {
 	opacity: 0.5;
 }

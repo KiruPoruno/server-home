@@ -1,18 +1,29 @@
 async function load() {
-	let pages = await (await fetch("pages.json")).json();
+	let prefs = await (await fetch("settings.json")).json();
 	try {
-		pages = await (await fetch("custom-pages.json")).json();
+		prefs = await (await fetch("custom-settings.json")).json();
 	}catch(err) {}
 
-	for (let i = 0; i < pages.length; i++) {
-		links.innerHTML += `<div class="link link${i}">${pages[i].name}</div>`;
-		let link = document.querySelector(".link" + i);
-		link.setAttribute("onclick", `location.href = "${location.protocol}//${window.location.hostname}:${pages[i].port}"`);
+	document.title = prefs.title;
 
-		if (pages[i].port != "") {
-			link.innerHTML += `<div class="url">on port ${pages[i].port}</div>`
-		} else if (pages[i].url != "") {
-			link.innerHTML += `<div class="url">${pages[i].url}</div>`
+	for (let i = 0; i < prefs.pages.length; i++) {
+		main.innerHTML += `<div class="header">${prefs.pages[i].title}</div>`
+		for (let ii = 0; ii < prefs.pages[i].links.length; ii++) {
+			main.innerHTML += `<div class="links"><div class="link link${i + '' + ii}">${prefs.pages[i].links[ii].name}</div></div>`;
+			let link = document.querySelector(".link" + i + '' + ii);
+			link.setAttribute("onclick", `location.href = "${location.protocol}//${window.location.hostname}:${prefs.pages[i].links[ii].port}"`);
+
+			if (! prefs.hideurls) {
+				if (! prefs.pages[i].hideurls) {
+					if (! prefs.pages[i].links[ii].hideurl) {
+						if (prefs.pages[i].links[ii].port != "") {
+							link.innerHTML += `<div class="url">on port ${prefs.pages[i].links[ii].port}</div>`
+						} else if (prefs.pages[i].links[ii].url != "") {
+							link.innerHTML += `<div class="url">${prefs.pages[i].links[ii].url}</div>`
+						}
+					}
+				}
+			}
 		}
 	}
 }; load()
