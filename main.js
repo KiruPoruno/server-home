@@ -7,11 +7,13 @@ async function load() {
 	document.title = prefs.title;
 
 	for (let i = 0; i < prefs.pages.length; i++) {
-		main.innerHTML += `<div class="header">${prefs.pages[i].title}</div>`
+		main.innerHTML += `<div class="header">${prefs.pages[i].title}</div>`;
+		main.innerHTML += `<div class="links ${prefs.pages[i].title + i}"></div>`;
 		for (let ii = 0; ii < prefs.pages[i].links.length; ii++) {
 			let pref = prefs.pages[i].links[ii];
+			let links = document.querySelector(`.${prefs.pages[i].title + i}`);
 
-			main.innerHTML += `<div class="links"><div class="link link${i + '' + ii}">${pref.name}</div></div>`;
+			links.innerHTML += `<div class="link link${i + '' + ii}">${pref.name}</div>`;
 			let link = document.querySelector(".link" + i + '' + ii);
 
 			if (! pref.url) {pref.url = ""}
