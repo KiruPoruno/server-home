@@ -3,6 +3,8 @@
 	--fg: #000000;
 	--shadow: 0px 2px 8px rgba(0,0,0,0.1);
 	--activeshadow: 0px 4px 6px rgba(0,0,0,0.1);
+
+	--radius: 8px;
 }
 
 @media(prefers-color-scheme:dark) {
@@ -25,7 +27,7 @@ body {
 }
 
 #main .header {
-	font-size: 2.5em;
+	font-size: 2em;
 }
 
 #main .links {
@@ -37,13 +39,15 @@ body {
 .links .link {
 	width: 20vw;
 	padding: 15px;
+	display: flex;
 	cursor: pointer;
 	min-width: 220px;
 	max-width: 300px;
 	user-select: none;
-	border-radius: 10px;
+	align-items: center;
 	box-shadow: var(--shadow);
 	margin: 10px 10px 10px 0px;
+	border-radius: var(--radius);
 	transition: 0.3s ease-in-out;
 	transition-property: transform box-shadow;
 }
@@ -54,6 +58,13 @@ body {
 
 .links .link:hover {
 	box-shadow: var(--activeshadow);
+}
+
+.links .link img {
+	width: 3em;
+	height: 3em;
+	margin-right: 1em;
+	border-radius: var(--radius);
 }
 
 .links .link .url,

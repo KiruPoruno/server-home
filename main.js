@@ -13,11 +13,25 @@ async function load() {
 			let pref = prefs.pages[i].links[ii];
 			let links = document.querySelector(`.title-${prefs.pages[i].title + i}`);
 
-			links.innerHTML += `<div class="link link-${i + '' + ii}">${pref.name}</div>`;
-			let link = document.querySelector(".link-" + i + '' + ii);
+			links.innerHTML += `
+				<div class="link link-${i + '' + ii}">
+					<img src="">
+					<div class="main">
+						${pref.name}
+					</div>
+				</div>`;
+
+			let box = document.querySelector(".link-" + i + '' + ii);
+			let main_div = box.querySelector(".main");
+
+			if (pref.icon) {
+				box.querySelector("img").src = pref.icon;
+			} else {
+				box.querySelector("img").remove();
+			}
 
 			if (pref.description) {
-				link.innerHTML += `<div class="description">${pref.description}</div>`
+				main_div.innerHTML += `<div class="description">${pref.description}</div>`
 			}
 
 			if (! pref.url) {pref.url = ""}
@@ -28,18 +42,18 @@ async function load() {
 				if (! prefs.pages[i].hideurls) {
 					if (! pref.hideurl) {
 						if (pref.port != "") {
-							link.innerHTML += `<div class="url">on port ${pref.port}</div>`
+							main_div.innerHTML += `<div class="url">on port ${pref.port}</div>`
 						} else if (pref.url != "") {
-							link.innerHTML += `<div class="url">${pref.url}</div>`
+							main_div.innerHTML += `<div class="url">${pref.url}</div>`
 						}
 					}
 				}
 			}
 
 			if (pref.port != "") {
-				link.setAttribute("onclick", `location.href = "${pref.prefix}${location.protocol}//${window.location.hostname}:${pref.port}${pref.suffix}"`);
+				box.setAttribute("onclick", `location.href = "${pref.prefix}${location.protocol}//${window.location.hostname}:${pref.port}${pref.suffix}"`);
 			} else if (pref.url != "") {
-				link.setAttribute("onclick", `location.href = "${pref.prefix}${pref.url}${pref.suffix}"`);
+				box.setAttribute("onclick", `location.href = "${pref.prefix}${pref.url}${pref.suffix}"`);
 			}
 		}
 	}
