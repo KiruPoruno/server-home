@@ -29,13 +29,17 @@ async function load() {
 					if (! pref.hideurl) {
 						if (pref.port != "") {
 							link.innerHTML += `<div class="url">on port ${pref.port}</div>`
-							link.setAttribute("onclick", `location.href = "${pref.prefix}${location.protocol}//${window.location.hostname}:${pref.port}${pref.suffix}"`);
 						} else if (pref.url != "") {
 							link.innerHTML += `<div class="url">${pref.url}</div>`
-							link.setAttribute("onclick", `location.href = "${pref.prefix}${pref.url}${pref.suffix}"`);
 						}
 					}
 				}
+			}
+
+			if (pref.port != "") {
+				link.setAttribute("onclick", `location.href = "${pref.prefix}${location.protocol}//${window.location.hostname}:${pref.port}${pref.suffix}"`);
+			} else if (pref.url != "") {
+				link.setAttribute("onclick", `location.href = "${pref.prefix}${pref.url}${pref.suffix}"`);
 			}
 		}
 	}
